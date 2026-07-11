@@ -1,25 +1,9 @@
 #include <stdio.h>
 
+int main (void) {
 
-int main(void) {
-
-// A bit of cleanup here and there.
-
-
-int stuff[10];
-
-
-printf("Please enter 10 numbers.\n");
-
-
-int sum = 0;
-for (int i = 0; i < 10; i++) {
-scanf("%d", &stuff[i]);
-sum += stuff[i]; 
-printf("Current total:  %d\n", sum);
+for (int i = 1; i <= 100; i++) {
+printf("%d\n", i);
 }
-
-
-
-return 0;
+return 0;  
 }

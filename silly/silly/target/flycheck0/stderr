@@ -1,0 +1,60 @@
+   0.011663940s  INFO prepare_target{force=false package_id=silly v0.1.0 (/home/sam/Documents/silly/silly) target="silly"}: cargo::core::compiler::fingerprint: fingerprint error for silly v0.1.0 (/home/sam/Documents/silly/silly)/Check { test: false }/TargetInner { name: "silly", doc: true, ..: with_path("/home/sam/Documents/silly/silly/src/main.rs", Edition2024) }
+   0.011681650s  INFO prepare_target{force=false package_id=silly v0.1.0 (/home/sam/Documents/silly/silly) target="silly"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/sam/Documents/silly/silly/target/debug/.fingerprint/silly-df5bc127877db03a/bin-silly`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_call_main
+             at ./csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+  18: __libc_start_main_impl
+             at ./csu/../csu/libc-start.c:360:3
+  19: <unknown>
+   0.046548359s  INFO prepare_target{force=false package_id=silly v0.1.0 (/home/sam/Documents/silly/silly) target="silly"}: cargo::core::compiler::fingerprint: fingerprint error for silly v0.1.0 (/home/sam/Documents/silly/silly)/Check { test: true }/TargetInner { name: "silly", doc: true, ..: with_path("/home/sam/Documents/silly/silly/src/main.rs", Edition2024) }
+   0.046563898s  INFO prepare_target{force=false package_id=silly v0.1.0 (/home/sam/Documents/silly/silly) target="silly"}: cargo::core::compiler::fingerprint:     err: failed to read `/home/sam/Documents/silly/silly/target/debug/.fingerprint/silly-98a8de47ac97b171/test-bin-silly`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: <unknown>
+   1: <unknown>
+   2: <unknown>
+   3: <unknown>
+   4: <unknown>
+   5: <unknown>
+   6: <unknown>
+   7: <unknown>
+   8: <unknown>
+   9: <unknown>
+  10: <unknown>
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: __libc_start_call_main
+             at ./csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+  18: __libc_start_main_impl
+             at ./csu/../csu/libc-start.c:360:3
+  19: <unknown>
+    Checking silly v0.1.0 (/home/sam/Documents/silly/silly)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.15s

@@ -1,22 +1,25 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 int main(void) {
 
-int fd = open ("Stuff.txt", O_RDWR | O_CREAT, 0644);
-char crap[] = "Random crap\n";
+FILE* file = fopen("Stuff.txt", "w");
 
+char *crap = "Here's some random crap to write to a file!";
 
+fprintf(file, crap, stdout);
 
-if (fd == -1) {
-  printf("Failed to open crap\n");
-  return -1;
+if (file == NULL) {
+  perror("Failed to open file");
 }
 
-write (fd, crap, sizeof(crap) -1);
-printf("Crap successfully written: %s\n", crap);
+else {
+  printf("Success! %s", crap);
+}
 
-close(fd);
+
+fclose(file);
+
+
 return 0;
+
 }
