@@ -27,7 +27,13 @@ int main(void) {
             }
         }
 
+        framebuffer[20000] = 0x4EFF64;
+
+        
+        SDL_UpdateTexture(texture, NULL, framebuffer, WIDTH * sizeof(uint32_t));
+
         SDL_RenderClear(renderer);
+        SDL_RenderTexture(renderer, texture, NULL, NULL);
         SDL_RenderPresent(renderer);
     }
     
