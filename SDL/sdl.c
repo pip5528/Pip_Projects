@@ -1,23 +1,61 @@
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_video.h>
 #include <stdio.h>
 #include <stdint.h>
 
-#define WIDTH 1280
-#define HEIGHT 720
+#define WIDTH 320
+#define HEIGHT 200
 
 uint32_t framebuffer[WIDTH * HEIGHT];
 
+void put_pixel(int x, int y, uint32_t color) {
+    framebuffer[WIDTH * y + x] = color;
+}
+
 int main(void) {
-    SDL_Init(SDL_INIT_VIDEO);
+
+    if (!SDL_Init(SDL_INIT_VIDEO)) {
+        fprintf(stderr, "SDL Init failed: %s \n", SDL_GetError());
+        return -1;
+        }
+
     SDL_Window *window;
     SDL_Renderer *renderer;
     SDL_Texture *texture;
     SDL_Event event;
 
-    window = SDL_CreateWindow("SDL", WIDTH, HEIGHT, 0);
+    window = SDL_CreateWindow("SDL", WIDTH * 4, HEIGHT * 4, 0);
+
+    if (window == NULL) {
+        fprintf(stderr, "SDL_CreateWindow failed: %s \n", SDL_GetError());
+        SDL_Quit();
+        return -1;
+    }
+
     renderer = SDL_CreateRenderer(window, NULL);
+
+    if (renderer == NULL) {
+        fprintf(stderr, "SDL_Renderer failed: %s \n", SDL_GetError());
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return -1;
+
+    } 
+
+
     texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_XRGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
 
+    if (texture == NULL) {
+        fprintf(stderr, "SDL_CreateTexture failed: %s \n", SDL_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return -1;
+
+    }
+    
+    SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST);
+    
     uint8_t running = 1;
     
     while (running) {
@@ -27,7 +65,7 @@ int main(void) {
             }
         }
 
-        framebuffer[20000] = 0x4EFF64;
+        put_pixel(30, 60, 0x4EFF64);
 
         
         SDL_UpdateTexture(texture, NULL, framebuffer, WIDTH * sizeof(uint32_t));
