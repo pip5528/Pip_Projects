@@ -3,7 +3,7 @@
 int main(void)
 {
 
-// Decdicated to my favorite goth waifu
+// Dedicated to my favorite goth waifu
 const char *Mantra = "Always";
 
 while (1) {
