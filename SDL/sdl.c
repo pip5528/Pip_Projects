@@ -12,18 +12,30 @@ int main(void) {
     SDL_Window *window;
     SDL_Renderer *renderer;
     SDL_Texture *texture;
+    SDL_Event event;
 
     window = SDL_CreateWindow("SDL", WIDTH, HEIGHT, 0);
     renderer = SDL_CreateRenderer(window, NULL);
     texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_XRGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
 
-    while(1) {
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
+    uint8_t running = 1;
+    
+    while (running) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_EVENT_QUIT) {
+                running = 0;
+            }
+        }
+
+        SDL_RenderClear(renderer);
+        SDL_RenderPresent(renderer);
     }
     
-
+    SDL_DestroyTexture(texture);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
     SDL_Quit();
+
     return 0;
 }
 
