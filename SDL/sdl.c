@@ -1,4 +1,5 @@
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_timer.h>
 #include <SDL3/SDL_video.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -9,10 +10,21 @@
 uint32_t framebuffer[WIDTH * HEIGHT];
 
 void put_pixel(int x, int y, uint32_t color) {
+    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
+        return;
+    }
     framebuffer[WIDTH * y + x] = color;
 }
 
+void clear(uint32_t color) {
+    for (int i = 0; i < WIDTH * HEIGHT; ++i) {
+        framebuffer[i] = color;
+    }
+}
+
 int main(void) {
+
+    const double target_frame = 1.0 / 60.0;
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         fprintf(stderr, "SDL Init failed: %s \n", SDL_GetError());
@@ -57,22 +69,43 @@ int main(void) {
     SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST);
     
     uint8_t running = 1;
+    uint32_t frame = 0;
     
     while (running) {
+
+        uint64_t start = SDL_GetPerformanceCounter();
+
+
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_EVENT_QUIT) {
                 running = 0;
             }
         }
 
-        put_pixel(30, 60, 0x4EFF64);
-
+        clear(0xFFFFFF);
+        for (int y = 0; y < HEIGHT; ++y) {
+            for (int x = 0; x < WIDTH; ++x) {
+                if (x % 5 == 0) {
+                    put_pixel(x, y, 0xB701FF);
+                }
+            }
+        }
         
         SDL_UpdateTexture(texture, NULL, framebuffer, WIDTH * sizeof(uint32_t));
 
         SDL_RenderClear(renderer);
         SDL_RenderTexture(renderer, texture, NULL, NULL);
         SDL_RenderPresent(renderer);
+
+        uint64_t end = SDL_GetPerformanceCounter();
+
+        double elapsed = (double)(end - start) / (double)SDL_GetPerformanceFrequency();
+
+        if (elapsed < target_frame) {
+            SDL_Delay((target_frame - elapsed) * 1000.0);
+        }
+
+        frame += 1;
     }
     
     SDL_DestroyTexture(texture);
