@@ -82,14 +82,13 @@ int main(void) {
             }
         }
 
-        clear(0xFFFFFF);
-        for (int y = 0; y < HEIGHT; ++y) {
-            for (int x = 0; x < WIDTH; ++x) {
-                if (x % 5 == 0) {
-                    put_pixel(x, y, 0xB701FF);
-                }
-            }
-        }
+        clear(0x1e1e2e);
+        int x = frame % 320;
+        int y = HEIGHT / 2;
+        put_pixel(x, y, 0xf38ba8);
+               
+            
+        
         
         SDL_UpdateTexture(texture, NULL, framebuffer, WIDTH * sizeof(uint32_t));
 
