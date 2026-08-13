@@ -1,6 +1,4 @@
 #include <SDL3/SDL.h>
-#include <SDL3/SDL_timer.h>
-#include <SDL3/SDL_video.h>
 #include <stdio.h>
 #include <stdint.h>
 
@@ -24,7 +22,7 @@ void clear(uint32_t color) {
 
 int main(void) {
 
-    const double target_frame = 1.0 / 60.0;
+    const double target_frame = 1.0 / 60.0; // Refers to speed, not refresh
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         fprintf(stderr, "SDL Init failed: %s \n", SDL_GetError());
