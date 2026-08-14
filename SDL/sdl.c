@@ -80,6 +80,7 @@ int main(void) {
             }
         }
 
+        // Inspired by Catppuccin Mocha
         clear(0x1e1e2e);
         int x = frame % 320;
         int y = HEIGHT / 2;
