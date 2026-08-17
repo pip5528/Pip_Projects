@@ -1,13 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 
 /* This is one of my favorite Disney song parodies where the lyrics are printed in actual C code.
 It is of course a parody of Under The Sea from The Little Mermaid. */
 
 int main(void) {
-
-int *ptr = malloc(sizeof(int));
 
 printf("Press enter to print the lyrics:\n");
 getchar();
@@ -33,7 +30,7 @@ getchar();
 printf("Program in C\n");
 getchar();
 
-printf("Pointers, Assembly, manage your memory with malloc() and free()\n");
+printf("Pointers, assembly, manage your memory with malloc() and free()\n");
 getchar();
 
 
@@ -61,7 +58,7 @@ getchar();
 printf("Program in C\n");
 getchar();
 
-printf("Nobody's faster, -o2's the master indubitably\n");
+printf("Nobody's faster, -O2's the master indubitably\n");
 getchar();
 
 printf("We what the coders like to roast but they don't have a lot to boast\n");
@@ -85,7 +82,6 @@ getchar();
 printf("There'e implementations for all occasions, program in C");
 getchar();
 
-free(ptr);
-ptr = NULL;
 
+return 0;
 }
