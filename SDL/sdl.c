@@ -22,7 +22,7 @@ void clear(uint32_t color) {
 
 int main(void) {
 
-    const double target_frame = 1.0 / 60.0; // Refers to speed, not refresh
+    const double target_frame = 1.0 / 120.0; // Refers to speed, not refresh
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         fprintf(stderr, "SDL Init failed: %s \n", SDL_GetError());
@@ -34,7 +34,7 @@ int main(void) {
     SDL_Texture *texture;
     SDL_Event event;
 
-    window = SDL_CreateWindow("SDL", WIDTH * 4, HEIGHT * 4, 0);
+    window = SDL_CreateWindow("Pixel Bump", WIDTH * 4, HEIGHT * 4, 0);
 
     if (window == NULL) {
         fprintf(stderr, "SDL_CreateWindow failed: %s \n", SDL_GetError());
