@@ -22,7 +22,11 @@ void clear(uint32_t color) {
 
 int main(void) {
 
+<<<<<<< HEAD
     const double target_frame = 1.0 / 120.0; // Refers to speed, not refresh
+=======
+    const double target_frame = 1.0 / 160.0; // Refers to speed, not refresh
+>>>>>>> f473b14 (--allow-empty)
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         fprintf(stderr, "SDL Init failed: %s \n", SDL_GetError());
@@ -85,7 +89,7 @@ int main(void) {
         int x = frame % 320;
         int y = HEIGHT / 2;
         put_pixel(x, y, 0xf38ba8);
-               
+              
             
         
         

@@ -4,10 +4,11 @@
 
 int main(void) {
 
-char greeting1[] = "Hello";
-char greeting2[] = "World";
+char greeting1[32] = "Hello";
+char greeting2[32] = "World";
 
-strcat(greeting1, greeting2);
+strlcat(greeting1, greeting2, sizeof(greeting1));
+
 
 printf("%s\n", greeting1);
 
