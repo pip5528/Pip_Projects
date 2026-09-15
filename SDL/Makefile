@@ -1,5 +1,5 @@
 BUILD:
-	gcc sdl.c -o sdl -lSDL3
+	gcc sdl.c -o bin/sdl -lSDL3
 
 
 
