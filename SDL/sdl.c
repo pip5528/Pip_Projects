@@ -85,9 +85,10 @@ int main(void) {
         int x = frame % 320;
         int y = HEIGHT / 2;
         put_pixel(x, y, 0xf38ba8);
-              
-            
-        
+
+        y = frame % 200;
+        x = WIDTH / 2;
+        put_pixel(x, y, 0xf38ba8);
         
         SDL_UpdateTexture(texture, NULL, framebuffer, WIDTH * sizeof(uint32_t));
 
